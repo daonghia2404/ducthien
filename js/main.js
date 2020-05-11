@@ -99,6 +99,9 @@ window.onload = () => {
       const phone = document.querySelector('form #phone');
       const errorPhone = document.querySelector('form #errorPhone');
 
+      const address = document.querySelector('form #address');
+      const errorAddress = document.querySelector('form #errorAddress');
+
       function validateName(value) {
         if (value.length === 0) {
           errorName.innerHTML = 'Bạn phải nhập đầy đủ Họ tên !';
@@ -110,6 +113,21 @@ window.onload = () => {
           errorName.innerHTML = 'Hợp lệ !';
           errorName.classList.remove('not-correct');
           errorName.classList.add('correct');
+          return true;
+        }
+      }
+
+      function validateAddress(value) {
+        if (value.length === 0) {
+          errorAddress.innerHTML = 'Bạn phải nhập đầy đủ địa chỉ !';
+          errorAddress.classList.remove('correct');
+          errorAddress.classList.add('not-correct');
+          return false;
+        }
+        else {
+          errorAddress.innerHTML = 'Hợp lệ !';
+          errorAddress.classList.remove('not-correct');
+          errorAddress.classList.add('correct');
           return true;
         }
       }
@@ -160,7 +178,8 @@ window.onload = () => {
         validateName(name.value);
         validateEmail(email.value);
         validatePhone(phone.value);
-        if (validateName(name.value) && validateEmail(email.value) && validatePhone(phone.value)) {
+        validateAddress(address.value);
+        if (validateName(name.value) && validateEmail(email.value) && validatePhone(phone.value) && validateAddress(address.value)) {
           alert('Success !')
         }
       })
