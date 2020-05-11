@@ -168,6 +168,30 @@ window.onload = () => {
   }
   validation.init();
 
+  const video = {
+    init:function() {
+      this.video();
+    },
+    video:function() {
+      const videoPopup = document.querySelector('.video-popup');
+      if (videoPopup === null) return;
+      const openVideo = document.querySelector('.video-button');
+      const closeVideo = document.querySelector('.video-close');
+      const overlayVideo = document.querySelector('.video-overlay');
+
+      openVideo.addEventListener('click', () => {
+        videoPopup.classList.add('active');
+      })
+      closeVideo.addEventListener('click', () => {
+        videoPopup.classList.remove('active');
+      })
+      overlayVideo.addEventListener('click', () => {
+        videoPopup.classList.remove('active');
+      })
+    }
+  }
+  video.init();
+
   const owl = {
     init: function () {
       this.slider();
